@@ -33,6 +33,17 @@ jobs:
 #      - name: Set up SwiftLint
 #        run: brew install swiftlint
 
-      - name: Run autocorrect
-        id: autocorrect
-        run: bundle exec fastlane lint_autocorrect
+#      - name: Run autocorrect
+#        id: autocorrect
+#        run: bundle exec fastlane lint_autocorrect
+
+       - name: SwiftLint
+          run: |
+            pwd
+            cd ~
+            pwd
+            git clone https://github.com/realm/SwiftLint
+            cd SwiftLint
+            make
+            cd ~/repo
+            ~/SwiftLint/.build/x86_64-unknown-linux/release/swiftlint --config ./.swiftlint/swiftlint.yml
