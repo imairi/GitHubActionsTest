@@ -33,13 +33,6 @@ jobs:
       - name: Clone and Build SwiftLint
         run: |
           cd ~
-          git clone https://github.com/yonaskolb/Mint.git
-          cd Mint
-          make
-
-      - name: Clone and Build SwiftLint
-        run: |
-          cd ~
           git clone https://github.com/realm/SwiftLint
           cd SwiftLint
           make
@@ -50,4 +43,4 @@ jobs:
           ls -l ~/
           ls -l ~/SwiftLint/.build/
           ls -l ~/SwiftLint/.build/release/
-          ~/SwiftLint/.build/release/swiftlint --config .swiftlint.yml
+          #~/SwiftLint/.build/release/swiftlint --config .swiftlint.yml
