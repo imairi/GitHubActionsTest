@@ -49,4 +49,5 @@ jobs:
           ls -l ~/SwiftLint/.build/release/
           ls -l ~/SwiftLint/.build/release/swiftlint
           ~/SwiftLint/.build/release/swiftlint help
+          ~/SwiftLint/.build/release/swiftlint autocorrect
           #~/SwiftLint/.build/release/swiftlint --config .swiftlint.yml
