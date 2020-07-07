@@ -17,6 +17,11 @@ jobs:
       - name: Check diff
         if: steps.run-swiftlint.conclusion == 'success'
         run: |
+          git status
+          echo "- - - -"
+          git branch
+          echo "- - - -"
+          git reflog
           if git diff-index --quiet HEAD; then
             echo ::set-env name=hasDiff::false
           else
