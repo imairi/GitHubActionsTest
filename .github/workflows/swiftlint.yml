@@ -42,6 +42,5 @@ jobs:
           pwd
           ls -l ~/
           ls -l ~/SwiftLint/.build/
-          ls -l ~/SwiftLint/.build/x86_64-unknown-linux/
-          ls -l ~/SwiftLint/.build/x86_64-unknown-linux/release/
-          ~/SwiftLint/.build/x86_64-unknown-linux/release/swiftlint --config .swiftlint.yml
+          ls -l ~/SwiftLint/.build/release/
+          ~/SwiftLint/.build/release/swiftlint --config .swiftlint.yml
