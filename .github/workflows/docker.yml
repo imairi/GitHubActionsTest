@@ -1,0 +1,18 @@
+name: SwiftLint 
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+        with:
+          ref: master 
+     
+      - name: Test Docker
+        uses: docker://norionomura/swiftlint
+        run: | 
+          pwd
+          ls -l
+          swiftlint help
