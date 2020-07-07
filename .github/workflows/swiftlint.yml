@@ -10,30 +10,5 @@ jobs:
         with:
           ref: master 
 
-      - name: Set up Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-
-      - name: Cache Bundle
-        uses: actions/cache@v2
-        id: cache-bundle
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Bundle Install
-        run: |
-          gem install bundler
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-
-      - name: Check usr/lib
-        run: |
-          echo ${LINUX_SOURCEKIT_LIB_PATH}
-          ls -l /usr/lib
-
       - name: GitHub Action for SwiftLint
-        uses: imairi/action-swiftlint@3.1.0
+        uses: imairi/action-swiftlint@3.2.0
