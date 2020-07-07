@@ -36,4 +36,4 @@ jobs:
           ls -l /usr/lib
 
       - name: GitHub Action for SwiftLint
-        uses: imairi/action-swiftlint@latest
+        uses: imairi/action-swiftlint
