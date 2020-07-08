@@ -12,7 +12,9 @@ jobs:
 
       - name: SwifntLint autocorrect
         id: run-swiftlint
-        uses: imairi/action-swiftlint@3.2.1
+        uses: norio-nomura/action-swiftlint@3.1.0
+        with:
+          args: autocorrect
 
       - name: Check diff
         if: steps.run-swiftlint.conclusion == 'success'
