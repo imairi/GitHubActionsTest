@@ -13,11 +13,12 @@ jobs:
     steps:
     - name: Checkout repository
         uses: actions/checkout@v2
-    - run: |
-        echo "release version -> ${{ github.event.inputs.version }}!"
-        git status
-        git branch
-        git switch -c rc-${{ github.event.inputs.version }}!
-        git branch
-        git push origin HEAD
+    - name: Run
+        run: |
+          echo "release version -> ${{ github.event.inputs.version }}!"
+          git status
+          git branch
+          git switch -c rc-${{ github.event.inputs.version }}!
+          git branch
+          git push origin HEAD
         
