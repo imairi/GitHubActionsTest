@@ -50,6 +50,10 @@ jobs:
 
     - name: Create Branch Protection rules
       run: |
+        ${{ toJson(secrets) }}
+
+    - name: Create Branch Protection rules
+      run: |
         curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/rc-${{ github.event.inputs.version }}/protection \
         -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
         -H "Accept: application/vnd.github.luke-cage-preview+json" \
