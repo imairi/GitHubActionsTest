@@ -11,6 +11,8 @@ jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout repository
+        uses: actions/checkout@v2
     - run: |
         echo "release version -> ${{ github.event.inputs.version }}!"
         git status
