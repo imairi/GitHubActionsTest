@@ -16,11 +16,11 @@ jobs:
       with:
         fetch-depth: 1
     - name: Run
-        run: |
-          echo "release version -> ${{ github.event.inputs.version }}!"
-          git status
-          git branch
-          git switch -c rc-${{ github.event.inputs.version }}!
-          git branch
-          git push origin HEAD
+      run: |
+        echo "release version -> ${{ github.event.inputs.version }}!"
+        git status
+        git branch
+        git switch -c rc-${{ github.event.inputs.version }}!
+        git branch
+        git push origin HEAD
         
