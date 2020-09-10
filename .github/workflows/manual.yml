@@ -2,18 +2,20 @@ name: Manually triggered workflow
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
+      version:
+        description: 'Release version'
         required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
+        default: '1.0.0'
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "Hello ${{ github.event.inputs.name }}!"
-        echo "- in ${{ github.event.inputs.home }}!"
+        echo "release version -> ${{ github.event.inputs.version }}!"
+        git status
+        git branch
+        git switch -c rc-${{ github.event.inputs.version }}!
+        git branch
+        git push origin HEAD
+        
