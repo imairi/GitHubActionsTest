@@ -44,6 +44,6 @@ jobs:
 
         bundle exec fastlane bump_up_version version:${{ github.event.inputs.version }}
 
-        git add .
+        git add *.plist
         git commit -m "bump up version"
         git push origin HEAD
