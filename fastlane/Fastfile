@@ -9,4 +9,14 @@ platform :ios do
             ignore_exit_status: true
         )
     end
+    
+    desc "bump up version"
+    lane :bump_up_version do |options|
+        update_plist(
+            plist_path: "Info.plist",
+            block: proc do |plist|
+                plist["CFBundleShortVersionString"] = options[:version]
+            end
+        )
+    end
 end
