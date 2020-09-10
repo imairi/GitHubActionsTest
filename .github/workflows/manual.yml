@@ -17,7 +17,8 @@ jobs:
         fetch-depth: 1
     - name: Create RC branch and bump up version
       run: |
-        git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@example.com"
         git switch -c rc-${{ github.event.inputs.version }}
         echo "test" > ${{ github.event.inputs.version }}
         git add .
