@@ -8,19 +8,18 @@ on:
         default: '1.0.0'
 
 jobs:
-  say_hello:
+  create_rc_branch:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
         fetch-depth: 1
-    - name: Run
+    - name: Create RC branch and bump up version
       run: |
-        echo "release version -> ${{ github.event.inputs.version }}!"
-        git status
-        git branch
-        git switch -c rc-${{ github.event.inputs.version }}!
-        git branch
+        git switch -c rc-${{ github.event.inputs.version }}
+        echo "test" > ${{ github.event.inputs.version }}
+        git add .
+        git commit -m "bump up version"
         git push origin HEAD
         
