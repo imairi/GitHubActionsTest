@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
     - name: Run
         run: |
           echo "release version -> ${{ github.event.inputs.version }}!"
