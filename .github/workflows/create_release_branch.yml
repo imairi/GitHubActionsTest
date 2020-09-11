@@ -7,6 +7,10 @@ on:
         required: true
         default: '1.0.0'
 
+env:
+  RELEASE_VERSION: ${{ github.event.inputs.version }}
+  RC_BRANCH_NAME: rc-${{ github.event.inputs.version }}
+
 jobs:
   create_rc_branch:
     runs-on: ubuntu-latest
@@ -40,9 +44,9 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git switch -c rc-${{ github.event.inputs.version }}
+        git switch -c ${{ env.RC_BRANCH_NAME }}
 
-        bundle exec fastlane bump_up_version version:${{ github.event.inputs.version }}
+        bundle exec fastlane bump_up_version version:${{ env.RELEASE_VERSION }}
 
         git add *.plist
         git commit -m "bump up version"
@@ -50,7 +54,7 @@ jobs:
 
     - name: Create Branch Protection rules
       run: |
-        curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/rc-${{ github.event.inputs.version }}/protection \
+        curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/${{ env.RC_BARNCH_NAME }}/protection \
         -H "Authorization: token ${{ secrets.BRANCH_PROTECTION_SECRETS }}" \
         -H "Accept: application/vnd.github.luke-cage-preview+json" \
         -d @- << EOF
