@@ -24,8 +24,8 @@ jobs:
                   "value": "${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
                 },
                 {
-                  "title": "test",
-                  "value": "${{ github.event.repository.compare_url }}"
+                  "title": "Info.plist",
+                  "value": "${{ github.event.repository.html_url }}/blob/${{ release-name  }}/Info.plist"
                 }
               ]
             }
