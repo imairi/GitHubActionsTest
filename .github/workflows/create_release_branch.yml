@@ -74,3 +74,10 @@ jobs:
           "restrictions": null
         }
         EOF
+
+    - name: Slack Notification
+      uses: tokorom/action-slack-incoming-webhook@master
+      env:
+        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
+      with:
+        text: @imairi succeeded.
