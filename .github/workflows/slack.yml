@@ -12,4 +12,4 @@ jobs:
       env:
         INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
       with:
-        text: <@UV4EHGX0C> succeeded.
+        text: <!subteam^S01198M56L8> succeeded.
