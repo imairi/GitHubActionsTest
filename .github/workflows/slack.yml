@@ -21,11 +21,11 @@ jobs:
               "fields": [
                 {
                   "title": "Workflow",
-                  "value": "${{ github.repository.html_url }}/actions/runs/${{ github.run_id }}"
+                  "value": "${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
                 },
                 {
                   "title": "test",
-                  "value": "${{ github.event.compare_url }}"
+                  "value": "${{ github.event.repository.compare_url }}"
                 }
               ]
             }
