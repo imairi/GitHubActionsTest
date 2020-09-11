@@ -13,3 +13,21 @@ jobs:
         INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
       with:
         text: <!subteam^S01198M56L8> succeeded.
+        attachments: |
+          [
+            {
+              "color": "good",
+              "author_name": "${{ github.actor }}",
+              "author_icon": "${{ github.event.sender.avatar_url }}",
+              "fields": [
+                {
+                  "title": "Workflow",
+                  "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                },
+                {
+                  "title": "test",
+                  "value": "${{ github.event.compare }}"
+                }
+              ]
+            }
+          ]
