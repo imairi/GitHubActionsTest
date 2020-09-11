@@ -25,7 +25,7 @@ jobs:
                 },
                 {
                   "title": "Info.plist",
-                  "value": "${{ github.event.repository.html_url }}/blob/${{ release-name  }}/Info.plist"
+                  "value": "${{ github.event.repository.html_url }}/blob/master/Info.plist"
                 }
               ]
             }
