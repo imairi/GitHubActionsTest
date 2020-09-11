@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - name: dump
+      run: ${{ toJson(github) }}
+
     - name: Slack Notification
       uses: tokorom/action-slack-incoming-webhook@master
       env:
@@ -22,7 +25,7 @@ jobs:
               "fields": [
                 {
                   "title": "Workflow",
-                  "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                  "value": "${{ github.repository.html_url }}/actions/runs/${{ github.run_id }}"
                 },
                 {
                   "title": "test",
