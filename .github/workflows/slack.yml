@@ -6,10 +6,6 @@ jobs:
   create_rc_branch:
     runs-on: ubuntu-latest
     steps:
-
-    - name: dump
-      run: ${{ toJson(github) }}
-
     - name: Slack Notification
       uses: tokorom/action-slack-incoming-webhook@master
       env:
@@ -29,7 +25,7 @@ jobs:
                 },
                 {
                   "title": "test",
-                  "value": "${{ github.event.compare }}"
+                  "value": "${{ github.event.compare_url }}"
                 }
               ]
             }
