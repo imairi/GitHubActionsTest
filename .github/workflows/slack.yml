@@ -12,4 +12,4 @@ jobs:
       env:
         INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
       with:
-        text: <!imairi> succeeded.
+        text: <@UV4EHGX0C> succeeded.
