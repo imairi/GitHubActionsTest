@@ -12,14 +12,17 @@ jobs:
     - name: Check version
       run: swift --version
 
-    - name: Install Mint
-      run: | 
-        git clone https://github.com/yonaskolb/Mint.git
-        cd Mint
-        swift run mint install yonaskolb/mint
-
     - name: Install RIBsTreeMaker
-      run: mint install imairi/RIBsTreeMaker
+      run: |
+        git clone git@github.com:imairi/RIBsTreeMaker.git
+        cd RIBsTreeMaker
+        swift run RIBsTreeMaker
 
-    - name: Check RIBsTreeMaker
-      run: RIBsTreeMaker
+    - name: plantuml
+      id: plantuml
+      uses: grassedge/generate-plantuml-action@v1.5
+      with:
+      path: .
+      message: "Render PlantUML files"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
