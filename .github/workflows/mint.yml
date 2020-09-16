@@ -1,0 +1,13 @@
+name: Mint
+on:
+  workflow_dispatch:
+
+jobs:
+  mint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Swift
+      uses: fwal/setup-swift@v1
+
+    - name: Check version
+      run: swift --version
