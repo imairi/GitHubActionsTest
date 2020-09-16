@@ -19,7 +19,7 @@ jobs:
         swift run RIBsTreeMaker
 
     - name: plantuml
-      uses: grassedge/generate-plantuml-action@v1.5
+      uses: grassedge/generate-plantuml-action@master
       with:
         #path: uml
         message: "Render PlantUML files"
