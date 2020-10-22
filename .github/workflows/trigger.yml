@@ -15,7 +15,8 @@ jobs:
         fetch-depth: 1
     - name: Echo
       run: |
-        echo github.event.pull_request.merged
+        echo ${{ github.event.pull_request }}
+        echo ${{ github.event.pull_request.merged }}
     - name: Echo
       if: github.event.pull_request.merged == true
       run: |
