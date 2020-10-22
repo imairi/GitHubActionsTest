@@ -1,0 +1,23 @@
+name: Trigger test
+on:
+  pull_request:
+    branches:
+      - 'rc*'
+    types: [closed]
+
+jobs:
+  trigger_test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Echo
+      run: |
+        echo github.event.pull_request.merged
+    - name: Echo
+      if: github.event.pull_request.merged == true
+      run: |
+        echo "merged true"
+
