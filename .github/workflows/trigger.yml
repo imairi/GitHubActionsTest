@@ -22,5 +22,6 @@ jobs:
     - name: License Plist
       run: |
         git clone https://github.com/mono0926/LicensePlist.git
+        cd LicensePlist
         make install
 
