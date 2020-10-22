@@ -1,8 +1,6 @@
 name: Trigger test
 on:
   pull_request:
-    branches:
-      - 'rc*'
     types: [closed]
 
 jobs:
@@ -15,6 +13,7 @@ jobs:
         fetch-depth: 1
     - name: Echo
       run: |
+        ${{ toJson(github) }}
         echo ${{ github.event.pull_request }}
         echo ${{ github.event.pull_request.merged }}
     - name: Echo
