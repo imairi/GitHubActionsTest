@@ -27,6 +27,8 @@ jobs:
              | xargs -n1 curl \
              | jq -r '.[0].browser_download_url' \
              | xargs -n1 curl -LOk
+        ls -l 
+        echo "---"
         unzip license-plist.zip
         if [ $? -ne 0 ]
         then
@@ -35,5 +37,6 @@ jobs:
         fi
         #cp -f license-plist /usr/local/bin/license-plist
         ls -l
+        echo "---"
         ls -l license-plist
 
