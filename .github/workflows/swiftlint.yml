@@ -1,5 +1,5 @@
 name: SwiftLint 
-on: push
+on: workflow_dispatch
 
 jobs:
   lint:
