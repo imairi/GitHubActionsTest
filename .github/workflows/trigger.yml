@@ -13,9 +13,8 @@ jobs:
         fetch-depth: 1
     - name: Echo
       run: |
-        ${{ toJson(github) }}
-        echo ${{ github.event.pull_request }}
         echo ${{ github.event.pull_request.merged }}
+        echo ${{ github.base_ref }}
     - name: Echo
       if: github.event.pull_request.merged == true
       run: |
