@@ -21,7 +21,5 @@ jobs:
         echo "merged true"
     - name: License Plist
       run: |
-        git clone https://github.com/mono0926/LicensePlist.git
-        cd LicensePlist
-        make install
+        curl -fsSL https://raw.githubusercontent.com/mono0926/LicensePlist/master/install.sh | sh
 
