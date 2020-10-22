@@ -20,4 +20,8 @@ jobs:
       if: github.event.pull_request.merged == true
       run: |
         echo "merged true"
+    - name: License Plist
+      run: |
+        git clone https://github.com/mono0926/LicensePlist.git
+        make install
 
