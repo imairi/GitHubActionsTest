@@ -38,5 +38,5 @@ jobs:
         #cp -f license-plist /usr/local/bin/license-plist
         ls -l
         echo "---"
-        sh license-plist
+        license-plist
 
