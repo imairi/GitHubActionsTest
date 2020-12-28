@@ -34,7 +34,7 @@ jobs:
 
       - name: Set 
         run: |
-          echo "::set-output name=FOO::false"
+          echo "::set-output name=FOO::true"
         id: step-foo
 
       - name: Get
