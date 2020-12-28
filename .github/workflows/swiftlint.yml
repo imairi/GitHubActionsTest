@@ -38,6 +38,7 @@ jobs:
         id: step-foo
 
       - name: Get
+        if: ${{ steps.step-foo.outputs.FOO }} == 'true'
         run: |
           echo 'The FOO is' ${{ steps.step-foo.outputs.FOO }}
       
