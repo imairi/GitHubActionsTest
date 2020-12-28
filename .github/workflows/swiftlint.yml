@@ -31,6 +31,15 @@ jobs:
           fi
         env:
           HAS_DIFF: false
+
+      - name: Set 
+        run: |
+          echo "::set-output name=FOO::true"
+        id: step-foo
+
+      - name: Get
+        run: |
+          echo 'The FOO is' ${{ steps.step-foo.outputs.FOO }}
       
       - name: Create Pull Request
         if: ${{ env.HAS_DIFF }}
