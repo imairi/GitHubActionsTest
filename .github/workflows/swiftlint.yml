@@ -10,14 +10,14 @@ jobs:
         with:
           ref: master 
 
-      - name: SwifntLint autocorrect
-        id: run-swiftlint
-        uses: norio-nomura/action-swiftlint@3.1.0
-        with:
-          args: autocorrect
+#      - name: SwifntLint autocorrect
+#        id: run-swiftlint
+#        uses: norio-nomura/action-swiftlint@3.1.0
+#        with:
+#          args: autocorrect
 
       - name: Check diff
-        if: steps.run-swiftlint.conclusion == 'success'
+#        if: steps.run-swiftlint.conclusion == 'success'
         run: |
           git status
           echo "- - - -"
@@ -38,18 +38,18 @@ jobs:
         id: step-foo
 
       - name: Get
-        if: ${{ steps.step-foo.outputs.FOO }} == 'true'
+        if: ${{ steps.step-foo.outputs.FOO == 'true' }}
         run: |
           echo 'The FOO is' ${{ steps.step-foo.outputs.FOO }}
       
-      - name: Create Pull Request
-        if: ${{ env.HAS_DIFF }}
-        uses: peter-evans/create-pull-request@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: swiftlint-autocorrect-${{ github.run_number }}
-          commit-message: swiftlint autocorrect
-          title: SwiftLint autocorrect
-          body: |
-            Modified swift files following swiftlint rules.
-            These changes are automattically commited from GitHub Actions.
+ #     - name: Create Pull Request
+ #       if: ${{ env.HAS_DIFF }}
+ #       uses: peter-evans/create-pull-request@v2
+ #       with:
+ #         token: ${{ secrets.GITHUB_TOKEN }}
+ #         branch: swiftlint-autocorrect-${{ github.run_number }}
+ #         commit-message: swiftlint autocorrect
+ #         title: SwiftLint autocorrect
+ #         body: |
+ #           Modified swift files following swiftlint rules.
+ #           These changes are automattically commited from GitHub Actions.
