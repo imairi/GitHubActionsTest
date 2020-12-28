@@ -33,7 +33,7 @@ jobs:
           HAS_DIFF: false
       
       - name: Create Pull Request
-        if: ${{HAS_DIFF}} == 'true'
+        if: ${{ env.HAS_DIFF }}
         uses: peter-evans/create-pull-request@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
