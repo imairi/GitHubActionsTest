@@ -19,7 +19,7 @@ jobs:
 
     - name: Create Branch Protection rules
       run: |
-        curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/${BRANCH_NAME}/protection \
+        curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/${{ steps.extract_branch.outputs.BRANCH_NAME }}/protection \
         -H "Authorization: token ${{ secrets.BRANCH_PROTECTION_SECRETS }}" \
         -H "Accept: application/vnd.github.luke-cage-preview+json" \
         -d @- << EOF
