@@ -1,0 +1,36 @@
+name: Create Branch Protection Rules
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'topic/**'
+
+jobs:
+  create_branch_protection_rules:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Extract branch name
+      shell: bash
+      run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    - name: Get branch name
+      run: echo 'The branch name is' $BRANCH_NAME
+
+    - name: Create Branch Protection rules
+      run: |
+        curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/${BRANCH_NAME}/protection \
+        -H "Authorization: token ${{ secrets.BRANCH_PROTECTION_SECRETS }}" \
+        -H "Accept: application/vnd.github.luke-cage-preview+json" \
+        -d @- << EOF
+        {
+          "enforce_admins": true
+          },
+          "required_pull_request_reviews": {
+            "dismiss_stale_reviews": true,
+            "require_code_owner_reviews": false,
+            "required_approving_review_count": 1
+          },
+          "restrictions": null
+        }
+        EOF

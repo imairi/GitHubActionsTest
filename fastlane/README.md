@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios lint_autocorrect
 ```
 SwiftLint autocorrect
+### ios bump_up_version
+```
+fastlane ios bump_up_version
+```
+bump up version
 
 ----
 

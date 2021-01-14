@@ -48,36 +48,42 @@ jobs:
 
         bundle exec fastlane bump_up_version version:${{ env.RELEASE_VERSION }}
 
-        git add *.plist
-        git commit -m "bump up version"
+        if git diff-index --quiet HEAD; then
+          echo "CFBundleShortVersionString is correct."
+        else
+          echo "CFBundleShortVersionString should be updated."
+          git add *.plist
+          git commit -m "bump up version"
+        fi
+
         git push origin HEAD
 
-    - name: Create Branch Protection rules
-      run: |
-        curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/${{ env.RC_BARNCH_NAME }}/protection \
-        -H "Authorization: token ${{ secrets.BRANCH_PROTECTION_SECRETS }}" \
-        -H "Accept: application/vnd.github.luke-cage-preview+json" \
-        -d @- << EOF
-        {
-          "enforce_admins": true,
-          "required_status_checks": {
-            "strict": false,
-            "contexts": [
-              "lint"
-            ]
-          },
-          "required_pull_request_reviews": {
-            "dismiss_stale_reviews": true,
-            "require_code_owner_reviews": false,
-            "required_approving_review_count": 1
-          },
-          "restrictions": null
-        }
-        EOF
+#    - name: Create Branch Protection rules
+#      run: |
+#        curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/${{ env.RC_BARNCH_NAME }}/protection \
+#        -H "Authorization: token ${{ secrets.BRANCH_PROTECTION_SECRETS }}" \
+#        -H "Accept: application/vnd.github.luke-cage-preview+json" \
+#        -d @- << EOF
+#        {
+#          "enforce_admins": true,
+#          "required_status_checks": {
+#            "strict": false,
+#            "contexts": [
+#              "lint"
+#            ]
+#          },
+#          "required_pull_request_reviews": {
+#            "dismiss_stale_reviews": true,
+#            "require_code_owner_reviews": false,
+#            "required_approving_review_count": 1
+#          },
+#          "restrictions": null
+#        }
+#        EOF
 
-    - name: Slack Notification
-      uses: tokorom/action-slack-incoming-webhook@master
-      env:
-        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
-      with:
-        text: \@imairi succeeded.
+#    - name: Slack Notification
+#      uses: tokorom/action-slack-incoming-webhook@master
+#      env:
+#        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
+#      with:
+#        text: \@imairi succeeded.
