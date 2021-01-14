@@ -25,6 +25,11 @@ jobs:
         -d @- << EOF
         {
           "enforce_admins": true,
+          "required_status_checks": {
+             "strict": true,
+             "contexts": [
+             ]
+           },
           "required_pull_request_reviews": {
             "dismiss_stale_reviews": true,
             "require_code_owner_reviews": false,
