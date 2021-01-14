@@ -16,8 +16,12 @@ jobs:
 
     - name: Get branch name
       run: |
-        echo ${{ github.event.ref }}
         echo 'The branch name is' ${{ steps.extract_branch.outputs.BRANCH_NAME }}
+        if [[ ${{ steps.extract_branch.outputs.BRANCH_NAME }} =~ ^topic\/.*$ ]]; then
+          echo "this is topic"
+        else 
+          echo "this is NOT topic"
+        fi
 
     - name: Create Branch Protection rules
       run: |
