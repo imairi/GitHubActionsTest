@@ -6,7 +6,7 @@ on:
       - 'topic/**'
 
 jobs:
-  create_rc_branch:
+  create_branch_protection_rules:
     runs-on: ubuntu-latest
     steps:
     - name: Extract branch name
