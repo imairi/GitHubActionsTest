@@ -14,16 +14,18 @@ jobs:
       run: echo "::set-output name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
 
-    - name: Get branch name
+    - name: Check needs of protection
       run: |
         echo 'The branch name is' ${{ steps.extract_branch.outputs.BRANCH_NAME }}
         if [[ ${{ steps.extract_branch.outputs.BRANCH_NAME }} =~ ^topic\/.*$ ]]; then
-          echo "this is topic"
+          echo "::set-output name=NEEDS_PROTECTION::true"
         else 
-          echo "this is NOT topic"
+          echo "::set-output name=NEEDS_PROTECTION::false"
         fi
+      id: check_needs_of_protection
 
     - name: Create Branch Protection rules
+      if: ${{ steps.check_needs_of_protection.outputs.NEEDS_PROTECTION == 'true' }}
       run: |
         curl -X PUT https://api.github.com/repos/imairi/GitHubActionsTest/branches/${{ steps.extract_branch.outputs.BRANCH_NAME }}/protection \
         -H "Authorization: token ${{ secrets.BRANCH_PROTECTION_SECRETS }}" \
