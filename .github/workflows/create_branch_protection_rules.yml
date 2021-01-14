@@ -16,7 +16,7 @@ jobs:
 
     - name: Get branch name
       run: |
-        echo ${{ toJson(github) }}
+        echo ${{ github.event.ref }}
         echo 'The branch name is' ${{ steps.extract_branch.outputs.BRANCH_NAME }}
 
     - name: Create Branch Protection rules
