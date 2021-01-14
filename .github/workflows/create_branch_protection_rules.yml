@@ -1,7 +1,7 @@
 name: Create Branch Protection Rules
 on:
   workflow_dispatch:
-  push:
+  create:
     branches:
       - 'topic/**'
 
