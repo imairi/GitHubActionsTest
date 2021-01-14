@@ -24,8 +24,7 @@ jobs:
         -H "Accept: application/vnd.github.luke-cage-preview+json" \
         -d @- << EOF
         {
-          "enforce_admins": true
-          },
+          "enforce_admins": true,
           "required_pull_request_reviews": {
             "dismiss_stale_reviews": true,
             "require_code_owner_reviews": false,
